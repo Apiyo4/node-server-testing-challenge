@@ -6,4 +6,11 @@ async function insert(user){
     .where({ id })
     .first();
 }
-module.exports = {insert}
+function remove(id){
+  return db('users')
+  .delete(id)
+  .where("id", id)
+  .del();;
+  
+}
+module.exports = {insert, remove}

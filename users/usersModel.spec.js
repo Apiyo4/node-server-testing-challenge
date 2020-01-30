@@ -20,4 +20,17 @@ describe('UsersModel', ()=>{
 
      })
  })
+ describe('delete()', ()=>{
+    it('returns a value when user is deleted', async ()=>{
+        await Users.insert({username:'admin1', password:"1234", department:"sales"})
+        let noUser = await Users.remove(1);
+        expect(noUser).toBeTruthy();
+    })
+     it('deletes a user from the db', async ()=>{
+         await Users.insert({username:'admin1', password:"1234", department:"sales"})
+         let noUser = await Users.remove(1);
+         expect(noUser).toBe(1);
+     })
+     
+ })
 })
