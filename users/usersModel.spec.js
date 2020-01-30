@@ -33,4 +33,20 @@ describe('UsersModel', ()=>{
      })
      
  })
+ describe('find()', ()=>{
+     it('retruns all data in database', async()=>{
+        await Users.insert({username:'admin1', password:"1234", department:"sales"})
+        await Users.insert({username:'admin2', password:"1234", department:"sales"})
+        const users = await Users.find()
+        expect(users).toHaveLength(2);
+     })
+ })
+ describe('findById', ()=>{
+    it('can find a user in the db given an id', async()=>{
+        await Users.insert({username:'admin1', password:"1234", department:"sales"})
+        await Users.insert({username:'admin2', password:"1234", department:"sales"})
+        const user = await Users.findById(1);
+        expect(user).toMatchObject({username:'admin1', password:"1234", department:"sales"})
+    })
+ })
 })

@@ -13,4 +13,10 @@ function remove(id){
   .del();;
   
 }
-module.exports = {insert, remove}
+function find(){
+  return db("users");
+}
+function findById(id){
+  return db('users').where({id}).first();
+}
+module.exports = {insert, remove, find, findById}
