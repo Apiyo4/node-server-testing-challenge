@@ -11,5 +11,9 @@ describe('server.js module', ()=>{
             const res = await request(server).get('/')
             expect(res.status).toBe(200)
         })
+        it('returns a 200 OK response superset', ()=>{
+            return request(server).get('/')
+            .expect(200)
+        })
     })
 })
