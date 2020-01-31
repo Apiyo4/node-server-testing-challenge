@@ -17,7 +17,6 @@ describe('UsersModel', ()=>{
      it('ensures user inserted exists', async()=>{
         const user = await Users.insert({ username:'admin1', password:"1234", department:"sales"})
         expect(user).toMatchObject({username:'admin1', password:"1234", department:"sales" })
-
      })
  })
  describe('delete()', ()=>{
@@ -26,7 +25,7 @@ describe('UsersModel', ()=>{
         let noUser = await Users.remove(1);
         expect(noUser).toBeTruthy();
     })
-     it('deletes a user from the db', async ()=>{
+     it(' returns number of users deleted', async ()=>{
          await Users.insert({username:'admin1', password:"1234", department:"sales"})
          let noUser = await Users.remove(1);
          expect(noUser).toBe(1);
